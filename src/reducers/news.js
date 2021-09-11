@@ -19,7 +19,7 @@ export default (news = {categories: [], categoryTab:[], loading: true, error: ""
         case GET_DATA_SUCCESS:
             // news['loading'] = false;
             news['categories'] = action.payload.categories;
-            news['categoryTab'] = action.payload.categoryTab
+            news['categoryTab'] = action.payload.categoryTab;
             return news;
         case GET_DATA_FAILED:
             // news['loading']= false

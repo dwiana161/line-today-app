@@ -25,28 +25,8 @@ const NewsItem = ({ item, theme, bookmarkItem, unBookmarkItem, bookmarkItems }) 
   }
 
   return (
-      <Col xs={12} sm={6} md={6} lg={4} xl={4} className='my-2'>
-        <Card>
-          {item.urlToImage ? (
-            <div 
-              className='urlImage'
-              style={{ backgroundImage: `url(${item.urlToImage})` }}
-            />
-          ) : (
-            <div
-              className='urlImage'
-              style={{ backgroundImage: `url(${NewsDefaultImage})`}}
-            />
-          )}
-        <Card.Body>
-          <Card.Title>
-            {item.title}
-          </Card.Title>
-          <Card.Text>
-           {item.description}
-          </Card.Text>
-          <Button variant="primary" href={item.url} target="_blank">Go somewhere</Button>
-          {isBookmark(item) ? (
+    <>
+      {isBookmark(item) ? (
             <FaBookmark
               className="float-right mt-2 icon-button"
               size="1.5em"
@@ -59,17 +39,11 @@ const NewsItem = ({ item, theme, bookmarkItem, unBookmarkItem, bookmarkItems }) 
               onClick={() => bookmark(item)}
             />
           )
-          }
-        </Card.Body>
-        <Card.Footer>
-          <small className='text-muted'>
-            Published: <Moment format='YYYY/MM/DD' date={item.publishedAt} />
-          </small>
-        </Card.Footer>
-        </Card>
-      </Col>
-    )
+      }
+      </>
+  );
 }
+
 
 const mapStateToProps = state => ({
   bookmarkItems: state.bookmarks.bookmarkItems

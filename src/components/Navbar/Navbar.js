@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Navbar, Nav, NavDropdown, Form, FormControl, Button }from 'react-bootstrap';
 // import Nav from 'react-bootstrap/Nav';
+import './Navbar.css';
 import Container from 'react-bootstrap/Container';
 import { NavLink } from 'react-router-dom';
 import { useSelector } from 'react-redux';
@@ -8,7 +9,7 @@ import { toPath } from "../../utils/helper";
 // import { changeTheme } from '../actions/news';
 
 const TopNav = () => {
-  const appState = useSelector((state) => state.appState);
+  const news = useSelector((state) => state.news);
   const routerState = useSelector((state) => state.router);
   const [open, setOpen] = useState(false);
 
@@ -29,15 +30,16 @@ const TopNav = () => {
             >
               <div className="mt-3 py-3 -mx-3 overflow-y-auto whitespace-no-wrap scroll-hidden">
              <ul className={"tab-items"}>
-               {appState.categoryTab.map((category, i) => {
+               {news.categoryTab.map((category, i) => {
                  return (
-                   <li>
+                   <li
                      className={
                        toPath(category.name) === routerState.location.pathname
                        ? "menu-item current"
                        : "menu-item"
                      }
                      key={i}
+                     >
                      <Nav.Link 
                         activeClassName="nav-selected" 
                         exact as={NavLink} 
@@ -47,7 +49,7 @@ const TopNav = () => {
                         }
                         onClick={closeMenu}  
                       >{category.name}</Nav.Link>
-                    <Nav.Link activeClassName="active" as={NavLink} to="/bookmark">Bookmarks</Nav.Link>
+                    {/* <Nav.Link activeClassName="active" as={NavLink} to="/bookmark">Bookmarks</Nav.Link> */}
                     </li>
                  )
                })}

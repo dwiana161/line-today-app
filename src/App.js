@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import './App.css';
 import TopNav from './components/Navbar/Navbar';
 import { BrowserRouter, Switch, Route, Redirect } from 'react-router-dom';
@@ -28,7 +28,9 @@ import { useDispatch, useSelector } from 'react-redux';
 import { fetchData } from "./actions/news";
 
 function App() {
+  const [loading, setLoading] = useState(true);
   const news = useSelector((state) => state.news);
+  console.log(news);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -37,7 +39,7 @@ function App() {
 
   return (
     <BrowserRouter>
-    {news?.length === 0 ? (
+    {news?.length !== 0 ? (
       <div className="App mx-auto" style={{ maxWidth: "800px" }}>
       <TopNav />
       <Switch>
@@ -69,7 +71,7 @@ function App() {
       </div>
       ) : (
         <div className="App mx-auto" style={{ maxWidth: "800px" }}>
-            Null
+      null
           </div> )}
     </BrowserRouter>
   

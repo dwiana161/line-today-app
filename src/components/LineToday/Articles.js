@@ -1,8 +1,10 @@
 import React from "react";
+import { Card, Col, Row } from "react-bootstrap";
 import { titleSlicer } from "../../utils/helper";
 import Carousel from "./Carousel";
+import NewsItem from "../Bookmarks/NewsItem";
 
-const Articles = ({ sections, title }) => {
+const Articles = ({ sections, title, bookmarkItems, theme }) => {
   if (sections.length < 2) {
     return (
       <>
@@ -69,8 +71,10 @@ const Articles = ({ sections, title }) => {
                       ? "Artikel Lainnya"
                       : title}
                   </h1>
-                  <div className="grid grid-flow-row grid-cols-2 gap-3 m-4">
-                    {sections[0].articles.map((item, i) => {
+
+                  <Col className='my-2'>
+                    <Card>
+                      {sections[0].articles.map((item, i) => {
                       return (
                         <a
                           href={item.url.url}
@@ -85,16 +89,30 @@ const Articles = ({ sections, title }) => {
                               "/w580"
                             }
                           />
+
+                          <Card.Body>
+                            <Card.Title>
                           <p className="text-xl font-medium text-black">
                             {titleSlicer(item.title)}
                           </p>
+                          </Card.Title>
+                          <Card.Text>
                           <p className="text-normal text-gray-400">
                             {item.publisher}
                           </p>
+                          </Card.Text>
+                          {/* <Row className='justify-content-md-center mb-4 pb-4'>
+                          {bookmarkItems.map((item, i) => (
+                            <NewsItem key={i} item={item} theme={theme} />
+                          ))}
+                          </Row> */}
+                          </Card.Body>
                         </a>
-                      );
-                    })}
-                  </div>
+                         );
+                        })}
+                   
+                    </Card>
+                  </Col>
                 </section>
               </div>
             )}
@@ -136,6 +154,8 @@ const Articles = ({ sections, title }) => {
         >
           <section className="bg-white p-4 rounded">
             <div className="grid grid-flow-row grid-cols-2 gap-3">
+            <Col className= "my-2">
+              <Card>
               {sections[0].articles.map((item, i) => {
                 return (
                   <div className="articles-item-wrapper">
@@ -148,18 +168,24 @@ const Articles = ({ sections, title }) => {
                           "/w580"
                         }
                       />
-                      <div className="flex-grow">
+                      <Card.Body>
+                        <Card.Title>
                         <p className="text-l font-semibold text-black">
                           {titleSlicer(item.title)}
                         </p>
+                        </Card.Title>
+                        <Card.Text>
                         <p className="text-normal text-gray-400">
                           {item.publisher}
                         </p>
-                      </div>
+                        </Card.Text>
+                        </Card.Body>
                     </a>
                   </div>
                 );
               })}
+              </Card>
+              </Col>
             </div>
           </section>
         </div>
@@ -170,6 +196,8 @@ const Articles = ({ sections, title }) => {
       >
         <section className="w-full">
           <div className="flex flex-wrap">
+            <Col className="mt-2">
+              <Card>
             {sections[1].articles.map((item, i) => {
               return (
                 <div className="w-full">
@@ -186,18 +214,25 @@ const Articles = ({ sections, title }) => {
                         "/w580"
                       }
                     />
-                    <div className="flex-grow">
+
+                    <Card.Body>
+                      <Card.Title>
                       <p className="text-xl font-semibold text-black">
                         {titleSlicer(item.title)}
                       </p>
+                      </Card.Title>
+                      <Card.Text>
                       <p className="text-normal text-gray-400">
                         {item.publisher}
                       </p>
-                    </div>
+                      </Card.Text>
+                      </Card.Body>
                   </a>
                 </div>
               );
             })}
+            </Card>
+            </Col>
           </div>
         </section>
       </div>
