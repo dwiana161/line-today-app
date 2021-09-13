@@ -2,15 +2,10 @@ import React from 'react'
 import { useDispatch,useSelector } from 'react-redux';
 import Articles from '../LineToday/Articles';
 import NewsList from '../LineToday/NewsList';
-import { bookmark } from '../../actions/bookmarks';
 
 const Top = () => {
     const news = useSelector((state) => state.news);
     const dispatch = useDispatch();
-
-    const addBookmark = (article) => {
-        dispatch(bookmark(article));
-    }
 
     return (
         <NewsList>
@@ -22,8 +17,6 @@ const Top = () => {
                                 sections={article.sections} 
                                 title={article.title} 
                                 key={i}
-                                // onHandleBookmark={addBookmark}
-                                // bookmark={article}
                                 />     
                     }
                     

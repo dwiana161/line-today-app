@@ -16,7 +16,7 @@ const isBookmark = item => {
   if (bookmarks !== null) {
     // bookmarks = JSON.parse(bookmarks)
     return (
-      bookmarks.id === item.id
+      bookmarks.findIndex(bookmark => bookmark.id === item.id) > -1
     )
   }
 }
