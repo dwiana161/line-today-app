@@ -20,7 +20,7 @@
   }
   
   .tab-items {
-    background-color: black;
+    background-color: rgb(82, 16, 16);
     margin-left: 10%;
     margin-right: 10%;
   }
@@ -62,7 +62,7 @@
   }
   .menu-item.current {
     background-color: black;
-    color: black;
+    color: rgb(250, 248, 248);
   }
   
   .menu-item:hover,

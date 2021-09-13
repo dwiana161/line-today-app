@@ -1,0 +1,21 @@
+.img {
+    max-width: 50.806rem;
+    max-height: 50.922rem;
+    top: 9.548rem;
+    z-index: -1;
+}
+
+@media(max-width: 660px) {
+    .img {
+      max-width: 20rem !important;
+      max-height: 20.922rem !important;
+    }
+  }
+
+  .card {
+      background-color: burlywood;
+  }
+
+  .carousel {
+      background-color: dimgrey;
+  }

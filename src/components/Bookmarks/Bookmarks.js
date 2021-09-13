@@ -4,6 +4,7 @@ import { bookmark, unBookmarkItem } from "../../actions/bookmarks";
 import { useDispatch, useSelector } from "react-redux";
 import { Card, Col, Row } from "react-bootstrap";
 import { titleSlicer } from "../../utils/helper";
+import "../LineToday/Article.css";
 
 const Bookmarks = () => {
     const bookmarks = useSelector((state) => state.bookmarks.bookmarkItems);
@@ -29,7 +30,7 @@ const Bookmarks = () => {
     return (
       <div>
       <Col xs={12} sm={12}>
-            <p className='h5  text-center'>
+            <p className='h5 text-center'>
               {bookmarks.length === 0 ? (
                 <Fragment>
                   You have {bookmarks.length} Bookmarks(s)
@@ -40,7 +41,7 @@ const Bookmarks = () => {
             </p>
           </Col>
           <Row className='justify-content-md-center mb-4 pb-4'>
-        <Card>
+        <Card className='card'>
        {bookmarks.map((item, i) => (
           <div>
           <a
@@ -49,7 +50,7 @@ const Bookmarks = () => {
             key={i}
           >
             <img
-              className="w-full h-60 rounded"
+              className="img w-full h-60 rounded"
               src={
                 "https://obs.line-scdn.net/" +
                 item.thumbnail.hash +
