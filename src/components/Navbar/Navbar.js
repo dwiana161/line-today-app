@@ -28,7 +28,10 @@ const TopNav = () => {
             style={{ maxHeight: '100px' }}
             navbarScroll
             >
-              <div className="mt-3 py-3 -mx-3 overflow-y-auto whitespace-no-wrap scroll-hidden">
+            <div className="mt-3 py-3 -mx-3 overflow-y-auto whitespace-no-wrap scroll-hidden">
+            <Nav.Link activeClassName='active' as={NavLink} to='/bookmarks'>
+              Bookmarks
+            </Nav.Link>
              <ul className={"tab-items"}>
                {news.categoryTab.map((category, i) => {
                  return (
@@ -55,9 +58,7 @@ const TopNav = () => {
                })}
              </ul>
            </div>
-           
             </Nav>
-           
         </Navbar.Collapse>
     </Container>
     </Navbar>

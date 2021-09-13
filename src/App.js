@@ -26,6 +26,8 @@ import Trending from './components/Category/Trending';
 import Videos from './components/Category/Videos';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchData } from "./actions/news";
+import { bookmark, unBookmarkItem, getBookmarkItems } from "./actions/bookmarks";
+import Bookmarks from "./components/Bookmarks/Bookmarks";
 
 function App() {
   const [loading, setLoading] = useState(true);
@@ -34,7 +36,9 @@ function App() {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(fetchData())
+    dispatch(fetchData());
+    // dispatch(bookmark());
+    dispatch(getBookmarkItems());
   }, []);
 
   return (
@@ -66,7 +70,7 @@ function App() {
       <Route path="/Top" component={Top} />
       <Route path="/Trending" component={Trending} />
       <Route path="/Videos" component={Videos} />
-      {/* <Route path='/detail' exact component={Bookmark} /> */}
+      <Route path="/bookmarks" component={Bookmarks} />
       </Switch>
       </div>
       ) : (

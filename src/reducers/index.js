@@ -6,6 +6,6 @@ import history from "../utils/history";
 
 export const reducers = combineReducers({
     router: connectRouter(history), 
-    news
-    // bookmarks 
+    news,
+    bookmarks 
 });

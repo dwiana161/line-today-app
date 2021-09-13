@@ -8,12 +8,7 @@ export default function configureStore(initialState = {}, history) {
 
     const composeEnhancers = 
     typeof window === 'object' &&
-    window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ ?   
-      window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__({
-        // Specify extension’s options like name, actionsBlacklist, actionsCreators, serialize...
-        shouldHotReload: false,
-        name: 'LineToday',
-      }) : compose;
+    window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
       
       const enhancer = composeEnhancers(
         applyMiddleware(...middlewares),

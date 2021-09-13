@@ -1,55 +1,97 @@
-import React from 'react'
-import { Card, Col, Button } from 'react-bootstrap';
-import { connect } from 'react-redux';
-import Moment from 'react-moment';
-import { bookmarkItem, unBookmarkItem } from '../../actions/bookmarks';
+import React, { Fragment } from 'react';
 import { FaBookmark, FaRegBookmark } from 'react-icons/fa';
-import NewsDefaultImage from './obi-onyeador-UEQvUtRs224-unsplash.jpg';
+import { bookmark, unBookmarkItem } from "../../actions/bookmarks";
+import { useDispatch, useSelector } from "react-redux";
+import { Card, Col, Row } from "react-bootstrap";
+import { titleSlicer } from "../../utils/helper";
 
-const NewsItem = ({ item, theme, bookmarkItem, unBookmarkItem, bookmarkItems }) => {
-  
-  const isBookmark = item => {
-    if (bookmarkItems !== null) {
-      return (
-        bookmarkItems.findIndex(bookmark => bookmark.title === item.title) > -1
-      );
+const NewsItem = (bookmarks) => {
+    bookmarks = useSelector((state) => state.bookmarks.bookmarkItems);
+    console.log(bookmarks);
+    const dispatch = useDispatch();
+
+    const isBookmark = item => {
+    if (bookmarks !== null) {
+        // bookmarks = JSON.parse(bookmarks)
+        return (
+        bookmarks.findIndex(bookmark => bookmark.id === item.id) > -1
+        )
     }
-  };
+    }
+    
+    const bookmarkItem = item => {
+    dispatch(bookmark(item));
+    };
 
-  const bookmark = item => {
-    bookmarkItem(item);
-  };
+    const unBookmark = item => {
+    dispatch(unBookmarkItem(item));
+    };
+    return (
+      <div>
+      <Col xs={12} sm={12}>
+            <p className='h5  text-center'>
+              {bookmarks.length === 0 ? (
+                <Fragment>
+                  You have {bookmarks.length} Bookmarks(s)
+                </Fragment>
+              ) : (
+                <Fragment> {bookmarks.length} Bookmarks(s)</Fragment>
+              )}
+            </p>
+          </Col>
+          <Row className='justify-content-md-center mb-4 pb-4'>
+        <Card>
+       {bookmarks.map((item, i) => (
+          <div>
+          <a
+            href={item.url.url}
+            className="articles-item"
+            key={i}
+          >
+            <img
+              className="w-full h-60 rounded"
+              src={
+                "https://obs.line-scdn.net/" +
+                item.thumbnail.hash +
+                "/w580"
+              }
+            />
 
-  const unBookmark = item => {
-    unBookmarkItem(item);
-  }
-
-  return (
-    <>
-      {isBookmark(item) ? (
+            <Card.Body>
+              <Card.Title>
+            <p className="text-xl font-medium text-black">
+              {titleSlicer(item.title)}
+            </p>
+            </Card.Title>
+            <Card.Text>
+            <p className="text-normal text-gray-400">
+              {item.publisher}
+            </p>
+            </Card.Text>
+            
+            </Card.Body>
+          </a>
+          <Row className='justify-content-md-center mb-4 pb-4'>
+          {isBookmark(item) ? (
             <FaBookmark
-              className="float-right mt-2 icon-button"
-              size="1.5em"
+              className='float-right mt-2 icon-button'
+              size='1.5em'
               onClick={() => unBookmark(item)}
             />
           ) : (
             <FaRegBookmark
-              className="float-right mt-2 icon-button"
-              size="1.5em"
-              onClick={() => bookmark(item)}
+              className='float-right mt-2 icon-button'
+              size='1.5em'
+              onClick={() => bookmarkItem(item)}
             />
-          )
-      }
-      </>
-  );
+          )}
+        </Row>
+        </div>
+    ))}
+      </Card>
+      </Row>
+      </div>
+    )
 }
 
-
-const mapStateToProps = state => ({
-  bookmarkItems: state.bookmarks.bookmarkItems
-});
-
-export default connect(
-  mapStateToProps,
-  { bookmarkItem, unBookmarkItem }
-)(NewsItem);
+export default NewsItem

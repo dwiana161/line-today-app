@@ -21,7 +21,7 @@ console.log(getUrl);
 
 export const fetchData = () =>{
     return async function(dispatch) {
-        axios.get('https://today.line.me/id/portaljson')
+        await axios.get('https://today.line.me/id/portaljson')
             .then( (response) => {
             const dataCategory = response.data.result.categories
             const dataTab = response.data.result.categoryList

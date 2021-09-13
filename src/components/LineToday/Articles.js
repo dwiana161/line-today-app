@@ -2,9 +2,33 @@ import React from "react";
 import { Card, Col, Row } from "react-bootstrap";
 import { titleSlicer } from "../../utils/helper";
 import Carousel from "./Carousel";
-import NewsItem from "../Bookmarks/NewsItem";
+import { FaBookmark, FaRegBookmark } from 'react-icons/fa';
+import { bookmark, unBookmarkItem } from "../../actions/bookmarks";
+import { useDispatch, useSelector } from "react-redux";
+import "./Article.css";
 
-const Articles = ({ sections, title, bookmarkItems, theme }) => {
+const Articles = ({ sections, title, bookmarks }) => {
+bookmarks = useSelector((state) => state.bookmarks.bookmarkItems);
+console.log(bookmarks);
+const dispatch = useDispatch();
+
+const isBookmark = item => {
+  if (bookmarks !== null) {
+    // bookmarks = JSON.parse(bookmarks)
+    return (
+      bookmarks.id === item.id
+    )
+  }
+}
+   
+const bookmarkItem = item => {
+  dispatch(bookmark(item));
+};
+
+const unBookmark = item => {
+  dispatch(unBookmarkItem(item));
+};
+
   if (sections.length < 2) {
     return (
       <>
@@ -76,6 +100,7 @@ const Articles = ({ sections, title, bookmarkItems, theme }) => {
                     <Card>
                       {sections[0].articles.map((item, i) => {
                       return (
+                        <div>
                         <a
                           href={item.url.url}
                           className="articles-item"
@@ -101,13 +126,25 @@ const Articles = ({ sections, title, bookmarkItems, theme }) => {
                             {item.publisher}
                           </p>
                           </Card.Text>
-                          {/* <Row className='justify-content-md-center mb-4 pb-4'>
-                          {bookmarkItems.map((item, i) => (
-                            <NewsItem key={i} item={item} theme={theme} />
-                          ))}
-                          </Row> */}
+                          
                           </Card.Body>
                         </a>
+                        <Row className='justify-content-md-center mb-4 pb-4'>
+                        {isBookmark(item) ? (
+                          <FaBookmark
+                            className='float-right mt-2 icon-button'
+                            size='1.5em'
+                            onClick={() => unBookmark(item)}
+                          />
+                        ) : (
+                          <FaRegBookmark
+                            className='float-right mt-2 icon-button'
+                            size='1.5em'
+                            onClick={() => bookmarkItem(item)}
+                          />
+                        )}
+                      </Row>
+                      </div>
                          );
                         })}
                    

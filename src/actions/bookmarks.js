@@ -1,24 +1,24 @@
 import { BOOKMARK_ITEM, UNBOOKMARK_ITEM, GET_BOOKMARK_ITEMS } from "../constants/actionTypes";
+import uuid from "react-uuid";
 
-export const bookmarkItem = item => (dispatch, getState) => {
+export const bookmark = item => (dispatch, getState) => {
     const { bookmarkItems } = getState().bookmarks;
     localStorage.setItem('bookmarks', JSON.stringify([item, ...bookmarkItems]));
     dispatch({
         type: BOOKMARK_ITEM,
         payload: item
-    });
+    })
 };
 
 export const unBookmarkItem = item => (dispatch, getState) => {
     const { bookmarkItems } = getState().bookmarks;
     const newBookmarkItems = bookmarkItems.filter(
-
-        bookmarkItem => bookmarkItem !== item
+      bookmarkItem => bookmarkItem !== item
     );
     localStorage.setItem('bookmarks', JSON.stringify(newBookmarkItems));
     dispatch({
-        type: UNBOOKMARK_ITEM,
-        payload: item
+      type: UNBOOKMARK_ITEM,
+      payload: item
     });
 };
 
