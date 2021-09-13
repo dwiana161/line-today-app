@@ -39,7 +39,7 @@ If the API cannot be accessed, install an extention: `Allow CORS: Access-Control
 ![home](https://user-images.githubusercontent.com/55675935/133089137-cd600c97-a84e-4277-8262-50eb6f9a4b7a.png)
 ![home2](https://user-images.githubusercontent.com/55675935/133089639-392c6b87-bb34-4161-98b7-82f2e18fe1bc.png)
 
-### `Bookmark`
+### `Bookmarks`
 ![bookmark](https://user-images.githubusercontent.com/55675935/133089663-ffde0288-bfa5-4636-be7a-d5ab5cea76c7.png)
 
 ### `Responsive`
