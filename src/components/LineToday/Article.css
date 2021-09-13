@@ -14,8 +14,14 @@
 
   .card {
       background-color: burlywood;
+      margin-top: 2rem!important;
   }
 
   .carousel {
       background-color: dimgrey;
   }
+
+  .fragment {
+      margin-top: 5rem!important;
+  }
+

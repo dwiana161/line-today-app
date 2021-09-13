@@ -29,19 +29,19 @@ const Bookmarks = () => {
     };
     return (
       <div>
-      <Col xs={12} sm={12}>
-            <p className='h5 text-center'>
+          <Row className='justify-content-md-center mb-4 pb-4'>
+        <Card className='card'>
+        <Col xs={12} sm={12}>
+            <p className='h5  text-center'>
               {bookmarks.length === 0 ? (
-                <Fragment>
+                <Fragment className='fragment'>
                   You have {bookmarks.length} Bookmarks(s)
                 </Fragment>
               ) : (
-                <Fragment> {bookmarks.length} Bookmarks(s)</Fragment>
+                <Fragment className='fragment'> {bookmarks.length} Bookmarks(s)</Fragment>
               )}
             </p>
           </Col>
-          <Row className='justify-content-md-center mb-4 pb-4'>
-        <Card className='card'>
        {bookmarks.map((item, i) => (
           <div>
           <a

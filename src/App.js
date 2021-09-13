@@ -26,7 +26,7 @@ import Trending from './components/Category/Trending';
 import Videos from './components/Category/Videos';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchData } from "./actions/news";
-import { bookmark, unBookmarkItem, getBookmarkItems } from "./actions/bookmarks";
+import { getBookmarkItems } from "./actions/bookmarks";
 import Bookmarks from "./components/Bookmarks/Bookmarks";
 
 function App() {
@@ -37,7 +37,6 @@ function App() {
 
   useEffect(() => {
     dispatch(fetchData());
-    // dispatch(bookmark());
     dispatch(getBookmarkItems());
   }, []);
 
