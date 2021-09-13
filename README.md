@@ -4,8 +4,8 @@ A web app created with react.js, redux and react-bootstrap using free api.
 
 ## Features
 
-Bullet list Search articles by category
-Bullet list item 2 Can bookmark individual articles (all bookmarks are save in browser local storage)
+* Search articles by category
+* Can bookmark individual articles (all bookmarks are save in browser local storage)
  
 ## Built with
 
