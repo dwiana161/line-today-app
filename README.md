@@ -32,7 +32,7 @@ The project was developed using :
 
 ## Caution
 
-If the API cannot be accessed, install an extention Allow CORS: Access-Control-Allow-Origin
+If the API cannot be accessed, install an extention: `Allow CORS: Access-Control-Allow-Origin` in chrome
 
 ## Overview
 ### `Menu by Category`
