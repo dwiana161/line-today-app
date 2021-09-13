@@ -1,5 +1,4 @@
 import { BOOKMARK_ITEM, UNBOOKMARK_ITEM, GET_BOOKMARK_ITEMS } from "../constants/actionTypes";
-import uuid from "react-uuid";
 
 export const bookmark = item => (dispatch, getState) => {
     const { bookmarkItems } = getState().bookmarks;
